@@ -28,9 +28,14 @@ public class TacoOrder {
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
 
+    /**
+     * Uses the Luhn algorithm check - https://creditcardvalidator.org/articles/luhn-algorithm
+     * Does not check if the card is assigned to any account that can be charged
+     */
     @CreditCardNumber(message = "Invalid credit card number")
     private String ccNumber;
 
+    // http://www.regular-expressions.info/
     @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([2-9][0-9])$",
         message="Must be formatted MM/YY")
     private String ccExpiration;
