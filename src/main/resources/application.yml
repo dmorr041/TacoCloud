@@ -1,0 +1,5 @@
+spring:
+  datasource:
+#    This property tells Spring not to generate a random name for the DB
+    generate-unique-name: false
+    name: tacocloud
