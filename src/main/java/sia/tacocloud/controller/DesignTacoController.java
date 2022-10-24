@@ -31,11 +31,11 @@ public class DesignTacoController {
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        Iterable<Ingredient> ingredients = ingredientRepository.findAll();
+        List<Ingredient> ingredients = ingredientRepository.findAll();
         Type[] types = Ingredient.Type.values();
 
         for(Type type : types) {
-            model.addAttribute(type.toString().toLowerCase(), filterByType((List<Ingredient>) ingredients, type));
+            model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
         }
     }
     @ModelAttribute(name = "tacoOrder")
@@ -65,7 +65,7 @@ public class DesignTacoController {
         return "redirect:/orders/current";
     }
 
-    private Iterable<Ingredient> filterByType(
+    private List<Ingredient> filterByType(
         List<Ingredient> ingredients, Type type) {
         return ingredients
             .stream()

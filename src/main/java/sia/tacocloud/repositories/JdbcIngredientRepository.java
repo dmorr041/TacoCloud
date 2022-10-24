@@ -17,7 +17,7 @@ public class JdbcIngredientRepository implements IngredientRepository {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public Iterable<Ingredient> findAll() {
+    public List<Ingredient> findAll() {
         return jdbcTemplate.query(
             "SELECT id, name, type FROM Ingredient",
             this::mapRowToIngredient);
